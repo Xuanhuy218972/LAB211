@@ -115,20 +115,32 @@ public class Validator {
         }
     }
 
+    // Backward-compatible helper for 2 choices, delegates to the generic overload below
     public static int getChoice(String fromType, String toType1, String toType2) {
+        return getChoice(fromType, new String[]{"Convert to " + toType1, "Convert to " + toType2});
+    }
+
+    // Generic N-choice selector usable across modules
+    public static int getChoice(String title, String... options) {
+        if (options == null || options.length == 0) {
+            throw new IllegalArgumentException("options must not be empty");
+        }
         while (true) {
-            System.out.println("Choose conversion from " + fromType + ":");
-            System.out.println("1. Convert to " + toType1);
-            System.out.println("2. Convert to " + toType2);
-            String input = askLine("Enter your choice (1-2): ");
+            if (title != null && !title.isEmpty()) {
+                System.out.println(title + ":");
+            }
+            for (int i = 0; i < options.length; i++) {
+                System.out.println((i + 1) + ". " + options[i]);
+            }
+            String input = askLine("Enter your choice (1-" + options.length + "): ");
             try {
                 int choice = Integer.parseInt(input);
-                if (choice == 1 || choice == 2) {
+                if (choice >= 1 && choice <= options.length) {
                     return choice;
                 }
-                System.out.println("Please enter 1 or 2.");
+                System.out.println("Please enter a number in range [1, " + options.length + "]");
             } catch (NumberFormatException ex) {
-                System.out.println("Invalid input. Please enter 1 or 2.");
+                System.out.println("Invalid input. Please enter a number.");
             }
         }
     }

@@ -7,8 +7,10 @@ public class Menu {
 
     public void displayProgram() {
         while (true) {
-            displayMenu();
-            int choice = Validator.checkInputIntLimit(1, 3);
+            int choice = Validator.getChoice("======= MENU =======",
+                    "Calculate Superlative Equation",
+                    "Calculate Quadratic Equation",
+                    "Exit");
             switch (choice) {
                 case 1 -> superlativeEquation();
                 case 2 -> quadraticEquation();
@@ -20,13 +22,7 @@ public class Menu {
         }
     }
 
-    private static void displayMenu() {
-        System.out.println("\n======= MENU =======");
-        System.out.println("1. Calculate Superlative Equation");
-        System.out.println("2. Calculate Quadratic Equation");
-        System.out.println("3. Exit");
-        System.out.print("Enter your choice: ");
-    }
+    // displayMenu no longer needed; replaced by Validator.getChoice(title, options)
 
     private static void superlativeEquation() {
         System.out.print("Enter A: ");
