@@ -3,8 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package J1.S.P0008;
-import J1.S.Validator;
 import java.util.Scanner;
+
+import J1.S.operation.Validator;
 /**
  *
  * @author hxhba
@@ -15,8 +16,8 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        String text = Validator.getLineWithLetters(sc, "Enter your content: ");
-
+        String text = Validator.inputLineWithLetters( sc, "Enter your content: ");
+             
         TextCounter counter = new TextCounter(text);
         System.out.println(counter.countWords());
         System.out.println(counter.countLetters());

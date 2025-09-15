@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package J1.S.P0010;
-import J1.S.Validator;
+import J1.S.operation.Validator;
 /**
  *
  * @author hxhba
