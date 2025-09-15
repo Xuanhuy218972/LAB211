@@ -101,7 +101,7 @@ public class Validator {
         }
     }
 
-    public static String checkInputHex() {
+    public static String checkInputHexa() {
         while (true) {
             String input = askLine("Enter hexadecimal number: ").toUpperCase();
             if (input.isEmpty()) {
@@ -114,10 +114,6 @@ public class Validator {
             System.out.println("Invalid hexadecimal number. Please enter valid hex digits (0-9, A-F).");
         }
     }
-
-    // Backward-compatible aliases for previous names
-    public static String CheckInputHexa() { return checkInputHex(); }
-    public static String checkInputHexa() { return checkInputHex(); }
 
     public static int getChoice(String fromType, String toType1, String toType2) {
         while (true) {

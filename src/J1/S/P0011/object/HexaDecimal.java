@@ -21,27 +21,29 @@ public class HexaDecimal {
     }
 
     private  String convertHexaToDecimal() {
-        int i = 0; 
-        int hex = Integer.parseInt(hexa);
         int decimal = 0;
-        while (hex != 0) {
-            int temp = hex % 10;
-            decimal += temp * Math.pow(16, i);
-            hex /= 10;
-            i++;
+        for (int i = 0; i < hexa.length(); i++) {
+            char c = hexa.charAt(i);
+            int value;
+            if (c >= '0' && c <= '9') {
+                value = c - '0';
+            } else { // 'A'..'F'
+                value = 10 + (c - 'A');
+            }
+            decimal = decimal * 16 + value;
         }
         return String.valueOf(decimal);
     }
 
     private String convertHexaToBinary() {
-        Decimal decimalObj = new Decimal();
-        String decimalStr = convertHexaToDecimal();
-        String binary = decimalObj.convertDecimalToBinary(decimalStr);
+        Decimal deci = new Decimal();
+        String decimal = convertHexaToDecimal();
+        String binary = deci.convertDecimalToBinary(decimal);
         return binary;
     }
 
     public void inputHexa(){
-        hexa = Validator.CheckInputHexa();
+        hexa = Validator.checkInputHexa();
     }
 
     public void convertfromHexaDecimal(){
@@ -53,6 +55,6 @@ public class HexaDecimal {
             case 2:
                 System.out.println("Decimal: " + convertHexaToDecimal());
                 break;
-        }
+        }   
     }
 }

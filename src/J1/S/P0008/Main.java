@@ -3,9 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package J1.S.P0008;
-import java.util.Scanner;
-
 import J1.S.operation.Validator;
+import java.util.Scanner;
 /**
  *
  * @author hxhba

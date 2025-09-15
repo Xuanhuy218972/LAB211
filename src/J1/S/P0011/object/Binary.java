@@ -38,7 +38,7 @@ public class Binary {
     }
 
     public void inputBinary() {
-        binary = Validator.chechkInputBinary();
+        binary = Validator.checkInputBinary();
     }
     
     public void convertFromBinary() {
