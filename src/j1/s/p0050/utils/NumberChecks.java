@@ -1,4 +1,4 @@
-package J1.S.P0050.object;
+package j1.s.p0050.utils
 
 public class NumberChecks {
 
