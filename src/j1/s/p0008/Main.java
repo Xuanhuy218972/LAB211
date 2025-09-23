@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package j1.s.p0008;
-import java.util.Scanner;
 
 import j1.s.operation.Validator;
 
@@ -15,14 +14,9 @@ import j1.s.operation.Validator;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        String text = Validator.inputLineWithLetters( sc, "Enter your content: ");
-             
+        String text = Validator.inputLineWithLetters("Enter your content: ");
         TextCounter counter = new TextCounter(text);
         System.out.println(counter.countWords());
         System.out.println(counter.countLetters());
-
-        sc.close();
     }
 }

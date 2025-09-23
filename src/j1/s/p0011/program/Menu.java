@@ -11,28 +11,25 @@ public class Menu {
 
         int choice;
         do {
-            System.out.println("=========Menu=========");
-            System.out.println("1. Convert Binary");
-            System.out.println("2. Convert Decimal");
-            System.out.println("3. Convert HexaDecimal");
-            System.out.println("4. Exit");
-            choice = Validator.checkNum("Enter your choice (1-4)");
+            choice = Validator.getChoice("=========Menu=========",
+                "Convert Binary",
+                "Convert Decimal",
+                "Convert HexaDecimal",
+                "Exit");
             switch (choice) {
-                case 1:
+                case 1 -> {
                     binary.inputBinary();
                     binary.convertFromBinary();
-                    break;
-                case 2:
+                }
+                case 2 -> {
                     decimal.inputDecimal();
-                    decimal.convertFromDecimal(decimal.getDecimal());
-                    break;
-                case 3:
+                    decimal.convertFromDecimal();
+                }
+                case 3 -> {
                     hexaDecimal.inputHexa();
-                    hexaDecimal.convertfromHexaDecimal();
-                    break;
-                case 4:
-                    System.out.println("Goodbye!");
-                    break;
+                    hexaDecimal.convertFromHexaDecimal();
+                }
+                case 4 -> System.out.println("Goodbye!");
             }
         } while (choice != 4);
     }

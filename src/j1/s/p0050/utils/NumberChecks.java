@@ -1,21 +1,20 @@
-package j1.s.p0050.utils
+package j1.s.p0050.utils;
 
 public class NumberChecks {
 
-    public static boolean checkOdd(double n) {
-        return n % 2 != 0;
+    public boolean checkOdd(double n) {
+        return n == (int) n && (int) n % 2 != 0;
     }
 
-    public static boolean checkEven(double n) {
-        return n % 2 == 0;
+    public boolean checkEven(double n) {
+        return n == (int) n && (int) n % 2 == 0;
     }
 
-    public static boolean checkSquareNumber(double n) {
-        int sqrt = (int) Math.sqrt(n);
-        return sqrt * sqrt == (int) n;
+    public boolean checkSquareNumber(double n) {
+        return n == (int) n && n >= 0 && Math.sqrt(n) == (int) Math.sqrt(n);
     }
 
-    public static void printClassifications(double... numbers) {
+    public void printClassifications(double... numbers) {
         System.out.print("Odd numbers: ");
         for (double n : numbers) {
             if (checkOdd(n)) System.out.print(n + " ");

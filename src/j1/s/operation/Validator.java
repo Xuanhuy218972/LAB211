@@ -1,5 +1,6 @@
 package j1.s.operation;
- /*
+
+/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -7,56 +8,47 @@ package j1.s.operation;
 import java.util.Scanner;
 
 public class Validator {
-    private static final Scanner IN = new Scanner(System.in);
-    private Validator() {
+
+    private static final Scanner SC = new Scanner(System.in);
+
+    private Validator() {   
     }
 
     private static String askLine(String prompt) {
         if (prompt != null && !prompt.isEmpty()) {
             System.out.print(prompt);
         }
-        return IN.nextLine().trim();
+        return SC.nextLine().trim();
     }
 
-    public static String inputNonEmptyLine(Scanner scanner, String prompt) {
-        String input;
+    public static String inputLineWithLetters(String prompt) {
         while (true) {
-            if (prompt != null && !prompt.isEmpty()) {
-                System.out.print(prompt);
+            String input = askLine(prompt);
+            
+            if (input.isEmpty()) {
+                System.out.println("Input must not be empty. Please try again.");
+                continue;
             }
-            input = scanner.nextLine().trim();
-            if (!input.isEmpty()) {
+        
+            boolean hasLetter = false;
+            for (int i = 0; i < input.length(); i++) {
+                if (Character.isLetter(input.charAt(i))) {
+                    hasLetter = true;
+                    break;
+                }
+            }
+            
+            if (hasLetter) {
                 return input;
             }
-            System.out.println("Input must not be empty. Please try again.");
-        }
-    }
-
-    public static boolean hasAtLeastOneLetter(String text) {
-        if (text == null) {
-            return false;
-        }
-        for (int i = 0; i < text.length(); i++) {
-            if (Character.isLetter(text.charAt(i))) {
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    public static String inputLineWithLetters(Scanner scanner, String prompt) {
-        while (true) {
-            String line = inputNonEmptyLine(scanner, prompt);
-            if (hasAtLeastOneLetter(line)) {
-                return line;
-            }
+            
             System.out.println("Input must contain at least one letter. Please try again.");
         }
     }
 
-    public static int checkNum(String message) {
+    public static int checkNum(String prompt) {
         while (true) {
-            String input = askLine(message == null || message.isEmpty() ? null : message + ": ");
+            String input = askLine(prompt == null || prompt.isEmpty() ? null : prompt + ": ");
             try {
                 int value = Integer.parseInt(input);
                 if (value <= 0) {
@@ -83,9 +75,6 @@ public class Validator {
             System.out.println("Invalid binary number. Please enter only 0s and 1s.");
         }
     }
-
-    // Backward-compatible alias for legacy misspelling
-    public static String chechkInputBinary() { return checkInputBinary(); }
 
     public static String checkInputDecimal() {
         while (true) {
@@ -115,12 +104,6 @@ public class Validator {
         }
     }
 
-    // Backward-compatible helper for 2 choices, delegates to the generic overload below
-    public static int getChoice(String fromType, String toType1, String toType2) {
-        return getChoice(fromType, new String[]{"Convert to " + toType1, "Convert to " + toType2});
-    }
-
-    // Generic N-choice selector usable across modules
     public static int getChoice(String title, String... options) {
         if (options == null || options.length == 0) {
             throw new IllegalArgumentException("options must not be empty");
@@ -132,16 +115,11 @@ public class Validator {
             for (int i = 0; i < options.length; i++) {
                 System.out.println((i + 1) + ". " + options[i]);
             }
-            String input = askLine("Enter your choice (1-" + options.length + "): ");
-            try {
-                int choice = Integer.parseInt(input);
-                if (choice >= 1 && choice <= options.length) {
-                    return choice;
-                }
-                System.out.println("Please enter a number in range [1, " + options.length + "]");
-            } catch (NumberFormatException ex) {
-                System.out.println("Invalid input. Please enter a number.");
+            int choice = checkNum("Enter your choice (1-" + options.length + ")");
+            if (choice >= 1 && choice <= options.length) {
+                return choice;
             }
+            System.out.println("Please enter a number in range [1, " + options.length + "]");
         }
     }
 
@@ -177,7 +155,7 @@ public class Validator {
         //loop until user input correct
         while (true) {
             try {
-                int result = Integer.parseInt(IN.nextLine().trim());
+                int result = Integer.parseInt(SC.nextLine().trim());
                 if (result < min || result > max) {
                     throw new NumberFormatException();
 
@@ -190,20 +168,32 @@ public class Validator {
         }
     }
 
-    //check user input double
-    public static double checkInputDouble() {
-        //loop until user input correct
+    public static double getDouble(double min, double max, String prompt) {
         while (true) {
             try {
-                double result = Double.parseDouble(askLine(null));
+                double result = Double.parseDouble(askLine(prompt));
+                if (result < min || result > max) {
+                    System.err.println("Please input number in range [" + min + ", " + max + "]");
+                    System.out.print("Enter again: ");
+                    continue;
+                }
                 return result;
             } catch (NumberFormatException e) {
                 System.err.println("Must be input double");
                 System.out.print("Enter again: ");
             }
+        }
+    }
 
+    public static String checkOperator(String prompt) {
+        while (true) {
+            String op = askLine(prompt);
+            if (op.equals("+") || op.equals("-") || op.equals("*") || op.equals("/")) {
+                return op;
+            } else {
+                System.err.println("Invalid operator. Please enter one of: +, -, *, /");
+                System.out.print("Enter again: ");
+            }
         }
     }
 }
-
-    

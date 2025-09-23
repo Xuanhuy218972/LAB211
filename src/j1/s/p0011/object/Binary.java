@@ -44,12 +44,8 @@ public class Binary {
     public void convertFromBinary() {
         int choice = Validator.getChoice("Binary", "Decimal", "HexaDecimal");
         switch (choice) {
-            case 1:
-                System.out.println("Decimal: " + convertBinaryToDecimal());
-                break;
-            case 2:
-                System.out.println("Hexadecimal: " + convertBinaryToHexa());
-                break;
+            case 1 -> System.out.println("Decimal: " + convertBinaryToDecimal());
+            case 2 -> System.out.println("Hexadecimal: " + convertBinaryToHexa());
         }
     }
 }

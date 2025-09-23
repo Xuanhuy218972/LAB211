@@ -45,15 +45,11 @@ public class Decimal {
         decimal = Validator.checkInputDecimal();
     }
 
-    public void convertFromDecimal(String decimal) {
+    public void convertFromDecimal() {
         int choice = Validator.getChoice("Decimal", "Binary", "HexaDecimal");
         switch (choice) {
-            case 1:
-                System.out.println("Binary: " + convertDecimalToBinary(decimal));
-                break;
-            case 2:
-                System.out.println("HexaDecimal: " + convertDecimalToHexa(decimal));
-                break;
+            case 1 -> System.out.println("Binary: " + convertDecimalToBinary(this.decimal));
+            case 2 -> System.out.println("HexaDecimal: " + convertDecimalToHexa(this.decimal));
         }
     }
 }
