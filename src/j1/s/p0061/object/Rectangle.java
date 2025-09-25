@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package j1.s.p0061.object;
+
 import j1.s.operation.Validator;
 
 /**
@@ -10,8 +11,9 @@ import j1.s.operation.Validator;
  * @author hxhba
  */
 public class Rectangle extends Shape {
-     private double length;
-     private double width;
+
+    private double length;
+    private double width;
 
     public Rectangle() {
     }
@@ -24,9 +26,9 @@ public class Rectangle extends Shape {
     public double getLength() {
         return length;
     }
-    
+
     public void setLength(double length) {
-        this.length = length;   
+        this.length = length;
     }
 
     public double getWidth() {
@@ -34,11 +36,10 @@ public class Rectangle extends Shape {
     }
 
     public void setWidth(double width) {
-        this.width = width; 
+        this.width = width;
     }
 
-    
-     @Override
+    @Override
     public double getPerimeter() {
         return 2 * (length + width);
     }
@@ -50,19 +51,19 @@ public class Rectangle extends Shape {
 
     @Override
     public void printResult() {
-         System.out.println("-----Rectangle-----");
-          System.out.println("Width: " + width);  
-         System.out.println("Length: " + length);
-           
-                System.out.println("Area: " + getArea());
-                    System.out.println("Perimeter: " + getPerimeter());
+        System.out.println("-----Rectangle-----");
+        System.out.println("Width: " + width);
+        System.out.println("Length: " + length);
+
+        System.out.println("Area: " + getArea());
+        System.out.println("Perimeter: " + getPerimeter());
     }
 
     @Override
     public void input() {
         width = Validator.getDouble(1, 1000, "Please input side width of Rectangle: ");
         length = Validator.getDouble(1, 1000, "Please input length of Rectangle: ");
-        
+
     }
-     
+
 }

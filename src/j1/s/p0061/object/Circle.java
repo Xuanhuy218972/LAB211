@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package j1.s.p0061.object;
+
 import j1.s.operation.Validator;
 
 /**
@@ -10,6 +11,7 @@ import j1.s.operation.Validator;
  * @author hxhba
  */
 public class Circle extends Shape {
+
     private double radius;
 
     public Circle() {
@@ -39,15 +41,15 @@ public class Circle extends Shape {
 
     @Override
     public void printResult() {
-         System.out.println("-----Circle-----");
-          System.out.println("Radius: " + radius);
-           System.out.println("Area: " + getArea());
-            System.out.println("Perimeter: " + getPerimeter());
+        System.out.println("-----Circle-----");
+        System.out.println("Radius: " + radius);
+        System.out.println("Area: " + getArea());
+        System.out.println("Perimeter: " + getPerimeter());
     }
 
     @Override
     public void input() {
         radius = Validator.getDouble(1, 1000, "Please input radius of Circle: ");
     }
-       
+
 }
